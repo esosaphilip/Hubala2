@@ -28,7 +28,7 @@ fun HulabaTopAppBar(){
             },
            actions = {
                 TopAppBArNotiIcon()
-            }
+           }
         )
     }
 
@@ -61,3 +61,11 @@ fun CenterTopAppBarText(){
         overflow = TextOverflow.Ellipsis
     )
 }
+
+
+
+
+
+
+
+

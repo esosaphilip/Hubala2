@@ -65,6 +65,7 @@ dependencies {
     implementation(libs.compose.material3)
     implementation(libs.koin.android)
     implementation(libs.koin.compose)
+    implementation(libs.androidx.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -72,4 +73,6 @@ dependencies {
     androidTestImplementation(libs.compose.uitest)
     debugImplementation(libs.compose.tooling)
     debugImplementation(libs.compose.manifest)
+
+    implementation(libs.androidx.material)
 }
