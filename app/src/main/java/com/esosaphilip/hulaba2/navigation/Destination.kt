@@ -15,5 +15,5 @@ val items = listOf(
     BottomNavItem.HomeScreen,
     BottomNavItem.WordScreen,
     BottomNavItem.NoteScreen,
-    BottomNavItem.CalenderScreen,
+    BottomNavItem.CalenderScreen
 )
