@@ -12,10 +12,10 @@ import com.esosaphilip.hulaba2.componentsforUi.HulabaTopAppBar
 @Composable
 fun HulabaNavHost(navController: NavHostController) {
     NavHost(navController, startDestination = BottomNavItem.HomeScreen.route) {
-        composable(BottomNavItem.HomeScreen.route) { /* Home Screen UI */ }
-        composable(BottomNavItem.WordScreen.route) { /* Word Screen UI */ }
-        composable(BottomNavItem.CalenderScreen.route) { /* Calender Screen UI */ }
-        composable(BottomNavItem.NoteScreen.route) { /* Note Screen UI */ }
+        composable(BottomNavItem.HomeScreen.route) {navController.navigate("home") }
+        composable(BottomNavItem.WordScreen.route) { navController.navigate("word") }
+        composable(BottomNavItem.CalenderScreen.route) { navController.navigate("calender") }
+        composable(BottomNavItem.NoteScreen.route) {navController.navigate("note") }
     }
 }
 

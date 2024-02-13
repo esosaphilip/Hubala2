@@ -2,6 +2,7 @@ package com.esosaphilip.hulaba2.componentsforUi
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -10,10 +11,16 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import com.esosaphilip.hulaba2.R
 
 @Preview(showBackground = true)
 @OptIn(ExperimentalMaterial3Api::class)
@@ -21,24 +28,66 @@ import androidx.compose.ui.tooling.preview.Preview
 fun HulabaTopAppBar(){
     Box {
         CenterAlignedTopAppBar(
-            title = {
-                CenterTopAppBarText()
-            },
+            title = {},
             navigationIcon = {
                 TopAppBArMenuIcon()
             },
            actions = {
-                TopAppBArNotiIcon()
+                TopAppBArNotiIcon(imageVector = Icons.Filled.Notifications)
            }
         )
     }
-
 }
+
+@Preview(showBackground = true)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopAppBArNotiIcon(){
+fun WordPageTopAppBar(){
+    Box {
+        TopAppBar(
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                titleContentColor = MaterialTheme.colorScheme.primary,
+            ),
+            navigationIcon = {
+                TopAppBArNotiIcon(imageVector = Icons.AutoMirrored.Filled.ArrowBack)
+            },
+            title = {
+                CenterTopAppBarText(stringResource(id = R.string.wordHeadText))
+            }
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun StudyPageTopAppBar(){
+    Box {
+        TopAppBar(
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                titleContentColor = MaterialTheme.colorScheme.primary,
+            ),
+            navigationIcon = {
+                TopAppBArNotiIcon(imageVector = Icons.AutoMirrored.Filled.ArrowBack)
+            },
+            title = {
+                CenterTopAppBarText(stringResource(id = R.string.studyHeadText))
+            }
+        )
+    }
+}
+
+
+
+@Composable
+fun TopAppBArNotiIcon(
+    imageVector: ImageVector
+){
     IconButton(onClick = { /* doSomething() */ }) {
         Icon(
-            imageVector = Icons.Filled.Notifications,
+            imageVector = imageVector,
             contentDescription = "Localized description"
         )
     }
@@ -55,11 +104,12 @@ fun TopAppBArMenuIcon(){
     }
 }
 @Composable
-fun CenterTopAppBarText(){
+fun CenterTopAppBarText(name: String){
     Text(
-        "Homepage",
+        name,
         maxLines = 1,
-        overflow = TextOverflow.Ellipsis
+        overflow = TextOverflow.Ellipsis,
+        textAlign = TextAlign.Center
     )
 }
 

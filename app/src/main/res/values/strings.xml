@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Hulaba2</string>
+    <string name="wordHeadText">Newly Learned Words</string>
+    <string name="studyHeadText">Topic</string>
+    <string name="addHeadText">Add Word</string>
+    <string name="editStudyText">Add Study Note</string>
+    <string name="menu">Menu</string>
+    <string name="newWord">Menu</string>
+    <string name="studyTopic">Menu</string>
 </resources>
