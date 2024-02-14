@@ -10,17 +10,22 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.esosaphilip.hulaba2.R
+import com.esosaphilip.hulaba2.ui.theme.Hulaba2Theme
 
 @Preview(showBackground = true)
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,7 +47,7 @@ fun HulabaTopAppBar(){
 @Preview(showBackground = true)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun WordPageTopAppBar(){
+fun WordPageTopAppBar() {
     Box {
         TopAppBar(
             colors = TopAppBarDefaults.topAppBarColors(
@@ -62,7 +67,7 @@ fun WordPageTopAppBar(){
 @Preview(showBackground = true)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StudyPageTopAppBar(){
+fun StudyPageTopAppBar() {
     Box {
         TopAppBar(
             colors = TopAppBarDefaults.topAppBarColors(
@@ -84,7 +89,7 @@ fun StudyPageTopAppBar(){
 @Composable
 fun TopAppBArNotiIcon(
     imageVector: ImageVector
-){
+) {
     IconButton(onClick = { /* doSomething() */ }) {
         Icon(
             imageVector = imageVector,
@@ -93,7 +98,7 @@ fun TopAppBArNotiIcon(
     }
 }
 @Composable
-fun TopAppBArMenuIcon(){
+fun TopAppBArMenuIcon() {
     IconButton(
         onClick = { /* doSomething() */ }
         ) {
@@ -104,7 +109,7 @@ fun TopAppBArMenuIcon(){
     }
 }
 @Composable
-fun CenterTopAppBarText(name: String){
+fun CenterTopAppBarText(name: String) {
     Text(
         name,
         maxLines = 1,
@@ -114,18 +119,57 @@ fun CenterTopAppBarText(name: String){
 }
 
 @Composable
-fun HeadText(name: String){
+fun HeadText(name: String) {
     Text(text = name, style = MaterialTheme.typography.titleLarge)
 }
 
 @Composable
-fun ExtendedIcons(painter: Painter){
+fun ExtendedIcons(painter: Painter) {
     Icon(painter = painter, contentDescription = null )
 }
 
+@Composable
+fun EnterWordTextField(
+    words: String,
+    saveWordFunction : () -> Unit
+) {
+  OutlinedTextField(value = words , onValueChange = {saveWordFunction()} )
+}
 
 
+@Composable
+fun EnterTopicTextField(
+    topics: String,
+    saveTopicFunction: () -> Unit,
 
+) {
+    OutlinedTextField(
+        value = topics ,
+        onValueChange = {saveTopicFunction()},
+        colors = OutlinedTextFieldDefaults.colors(
+            unfocusedContainerColor = MaterialTheme.colorScheme.primaryContainer
+        ),
+        shape = MaterialTheme.shapes.small
+    )
+}
+@Preview(showBackground = true)
+@Composable
+fun PreviewEnterTopic() {
+   Hulaba2Theme {
+       EnterTopicTextField(
+           topics = " ",
+           saveTopicFunction = {/** latter to poseidon  **/}
+       )
+   }
+}
+@Composable
+fun BottomNavigationIcon(icon : Int ) {
+    Icon(
+        painterResource(icon) ,
+        contentDescription = null,
+        tint = Color.Green
+    )
+}
 
 
 

@@ -1,26 +1,34 @@
 package com.esosaphilip.hulaba2.navigation
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.esosaphilip.hulaba2.componentsforUi.BottomNavigationIcon
 
 @Composable
-fun HulabaBottomNavigation(navController: NavController){
+fun HulabaBottomNavigation(
+    navController: NavController,
+    selectedItem: MutableState<BottomNavItem>
+) {
     Card(
-      elevation = CardDefaults.cardElevation(20.dp),
+      modifier = Modifier.padding(bottom = 5.dp),
+      elevation = CardDefaults.cardElevation(25.dp),
       shape = CardDefaults.shape,
-      colors = CardDefaults.cardColors(Color.Black)
-
+      colors = CardDefaults.cardColors(
+          containerColor = MaterialTheme.colorScheme.scrim
+      )
     ){
         BottomNavigation {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -34,9 +42,12 @@ fun HulabaBottomNavigation(navController: NavController){
                             popUpTo(navController.graph.startDestinationId)
                             launchSingleTop = true
                         }
+                        selectedItem.value = item // Update selectedItem when an item is clicked
                     },
-                    icon = { Icon(painterResource(item.resourceId) , contentDescription = null, tint = Color.Green) },
-                    label = { Text(item.label) }
+                    icon = {
+                         BottomNavigationIcon(icon = item.resourceId)
+                    },
+                    label = { Text(item.label, color = Color.White) }
                 )
             }
         }

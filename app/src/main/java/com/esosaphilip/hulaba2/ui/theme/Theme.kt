@@ -117,7 +117,7 @@ fun Hulaba2Theme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
-        //shapes = Shapes,
+        shapes = Shapes,
         content = content
     )
 }
